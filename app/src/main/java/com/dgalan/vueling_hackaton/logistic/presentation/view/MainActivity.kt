@@ -1,4 +1,4 @@
-package com.dgalan.vueling_hackaton.common.mainView
+package com.dgalan.vueling_hackaton.logistic.presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
