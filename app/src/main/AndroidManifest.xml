@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Vueling_hackaton"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".common.mainView.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
