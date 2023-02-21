@@ -1,7 +1,5 @@
 package com.dgalan.vueling_hackaton.logistic.domain.model
 
-import com.dgalan.vueling_hackaton.logistic.data.model.LogisticDto
-
 data class LogisticResult(
     val result: List<Logistic>,
     val errors: String,

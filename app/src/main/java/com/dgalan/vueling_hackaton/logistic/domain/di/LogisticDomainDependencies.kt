@@ -7,14 +7,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
 
 @Module
 @InstallIn(SingletonComponent::class)
-class CharactersDomainModule() {
+class LogisticDomainModule() {
 
     @Provides
-    @Named("get_all_characters")
-    fun provideGetAllCharactersUc(getAllCharactersUc: GetLogisticUC): @JvmSuppressWildcards LogisticDomainLayerContract.PresentationLayer.UseCase<LogisticResult> =
-        getAllCharactersUc
+    fun provideGetLogisticUC(getLogisticUC: GetLogisticUC): @JvmSuppressWildcards LogisticDomainLayerContract.PresentationLayer.UseCase<LogisticResult> =
+        getLogisticUC
 }

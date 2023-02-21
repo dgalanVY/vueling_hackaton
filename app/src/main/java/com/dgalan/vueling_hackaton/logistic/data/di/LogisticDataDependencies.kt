@@ -21,6 +21,6 @@ class LogisticDataModule() {
         }
 
     @Provides
-    fun provideCharactersRemoteDataSource(logisticDataSourceImp: LogisticDataSourceImp): LogisticDataSource.Remote =
+    fun provideLogisticDataSource(logisticDataSourceImp: LogisticDataSourceImp): LogisticDataSource.Remote =
         logisticDataSourceImp
 }

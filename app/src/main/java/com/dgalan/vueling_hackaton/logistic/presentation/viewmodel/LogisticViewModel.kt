@@ -16,11 +16,15 @@ class LogisticViewModel @Inject constructor(
     val getLogisticUC: LogisticDomainLayerContract.PresentationLayer.UseCase<LogisticResult>
 ) : ViewModel(), LogisticViewModelContract {
 
+    init {
+        getLogisticUC()
+    }
+
     val logistic: StateFlow<LogisticResult?>
         get() = _logistic.asStateFlow()
     private var _logistic: MutableStateFlow<LogisticResult?> = MutableStateFlow(null)
 
-    override fun onEndOfScrollReached() {
+    override fun getLogisticUC() {
         viewModelScope.launch {
             getLogisticUC.invoke().onSuccess { logistic ->
                 _logistic.value = logistic

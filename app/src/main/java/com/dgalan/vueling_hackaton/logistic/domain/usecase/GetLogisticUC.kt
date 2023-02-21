@@ -6,8 +6,7 @@ import javax.inject.Inject
 
 class GetLogisticUC @Inject constructor(
     private val logisticRepository: LogisticDomainLayerContract.DataLayer.LogisticRepository
-) :
-    LogisticDomainLayerContract.PresentationLayer.UseCase<LogisticResult> {
+) : LogisticDomainLayerContract.PresentationLayer.UseCase<LogisticResult> {
 
     override suspend fun invoke(): Result<LogisticResult> = logisticRepository.getLogisticList()
 }

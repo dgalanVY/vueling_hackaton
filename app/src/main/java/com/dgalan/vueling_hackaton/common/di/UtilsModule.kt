@@ -22,7 +22,7 @@ object UtilsModule {
     @Provides
     fun provideRetrofit(converterFactory: Converter.Factory): Retrofit =
         Retrofit.Builder()
-            .baseUrl("") //TODO(Poner la url)
+            .baseUrl("https://vuelingemployee-api.azurewebsites.net")
             .addConverterFactory(converterFactory)
             .build()
 }
