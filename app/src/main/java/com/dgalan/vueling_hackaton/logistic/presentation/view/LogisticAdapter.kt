@@ -1,15 +1,19 @@
 package com.dgalan.vueling_hackaton.logistic.presentation.view
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dgalan.vueling_hackaton.R
 import com.dgalan.vueling_hackaton.logistic.domain.model.Logistic
 
 class LogisticAdapter(
     private val data: MutableList<Logistic> = mutableListOf(),
+    private val context: Context
 
 ) : RecyclerView.Adapter<LogisticAdapter.LogisticViewHolder>() {
 
@@ -40,25 +44,32 @@ class LogisticAdapter(
         private val tvPartCost: TextView by lazy { itemView.findViewById(R.id.tv_part_cost) }
         private val tvTotalCost: TextView by lazy { itemView.findViewById(R.id.tv_total_cost) }
 
+        @SuppressLint("SetTextI18n")
         fun bindData(logistic: Logistic) {
-            //imgSet(logistic.gender)
+            val fullTimeCostFormatted = String.format("%.2f", logistic.fullTimeCost)
+            val partTimeCostFormatted = String.format("%.2f", logistic.partTimeCost)
+            val totalCostFormatted = String.format("%.2f", logistic.totalCost)
+            imgSet(logistic.handlingFunction)
             tvHandlingFunction.text = logistic.handlingFunction
-            tvHour.text = logistic.hour.toString()
+            tvHour.text = "${logistic.hour}:00h"
             tvDay.text = logistic.day
             tvFullTime.text = logistic.fullTimeEmployees.toString()
             tvPartTime.text = logistic.partTimeEmployees.toString()
-            tvFullCost.text = logistic.fullTimeCost.toString()
-            tvPartCost.text = logistic.partTimeCost.toString()
-            tvTotalCost.text = logistic.totalCost.toString()
+            tvFullCost.text = fullTimeCostFormatted + "€"
+            tvPartCost.text = partTimeCostFormatted + "€"
+            tvTotalCost.text = totalCostFormatted + "€"
         }
 
-//        private fun imgSet(gender: String) {
-//            when(gender) {
-//                MALE -> imgGender.setImageResource(R.drawable.img_male)
-//                FEMALE -> imgGender.setImageResource(R.drawable.img_female)
-//                else -> imgGender.setImageResource(R.drawable.img_unknown)
-//            }
-//        }
+        private fun imgSet(function: String) {
+            val drawable1 = ContextCompat.getDrawable(context, R.drawable.ic_jardinera)
+            val drawable2 = ContextCompat.getDrawable(context, R.drawable.ic_equipaje)
+            val drawable3 = ContextCompat.getDrawable(context, R.drawable.ic_coordination)
+            when(function) {
+                "JARDINERA" -> tvHandlingFunction.setCompoundDrawablesWithIntrinsicBounds(drawable1, null, null, null)
+                "EQUIPAJES" -> tvHandlingFunction.setCompoundDrawablesWithIntrinsicBounds(drawable2, null, null, null)
+                else -> tvHandlingFunction.setCompoundDrawablesWithIntrinsicBounds(drawable3, null, null, null)
+            }
+        }
 
     }
 

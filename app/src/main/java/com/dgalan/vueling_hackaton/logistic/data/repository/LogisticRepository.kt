@@ -10,7 +10,11 @@ object LogisticRepositoryImpl : LogisticDomainLayerContract.DataLayer.LogisticRe
     lateinit var logisticRemoteDataSource: LogisticDataSource.Remote
 
     override suspend fun getLogisticList(): Result<LogisticResult> =
+        try {
             logisticRemoteDataSource.getLogisticListResponse().map { dto ->
                 dto.toLogisticResult()
             }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
 }

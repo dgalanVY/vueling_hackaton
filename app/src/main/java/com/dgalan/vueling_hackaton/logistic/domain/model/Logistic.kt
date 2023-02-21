@@ -1,8 +1,9 @@
 package com.dgalan.vueling_hackaton.logistic.domain.model
 
+import java.time.LocalDateTime
+
 data class LogisticResult(
     val result: List<Logistic>,
-    val errors: String,
     val isOk: Boolean
 )
 
@@ -14,6 +15,6 @@ data class Logistic(
     val partTimeEmployees: Int,
     val totalEmployees: Int,
     val fullTimeCost: Double,
-    val partTimeCost: Int,
+    val partTimeCost: Double,
     val totalCost: Double
 )

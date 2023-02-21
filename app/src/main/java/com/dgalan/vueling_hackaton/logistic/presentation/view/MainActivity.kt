@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         with(binding.rvLogistic) {
             this.layoutManager = LinearLayoutManager(context)
-            this.adapter = LogisticAdapter()
+            this.adapter = LogisticAdapter(context = context)
         }
     }
 
